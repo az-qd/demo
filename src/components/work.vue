@@ -1,4 +1,4 @@
-<!-- eslint-disable vue/multi-word-component-names -->
+<!-- eslint-disable vue/multi-word-component-names
 <template>
     <div id="work"></div>
     <div id="worktwo"></div>
@@ -133,4 +133,89 @@ onMounted(() => {
     height: 30%;
     border-radius: 20px;
 }
+</style> -->
+
+
+<template>
+    <div>
+        <div ref="chartContainer" style="width: 300px; height: 350px;margin: 0 auto;margin-top: 20px;"></div>
+    </div>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue';
+import * as echarts from 'echarts';
+
+const chartContainer = ref(null);
+// 随机数
+const randomNum = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+const data = [
+    { name: 'BM5661726418', workTime: randomNum(0, 50), kilometers: randomNum(50, 100) },
+    { name: 'BM5661726332', workTime: randomNum(0, 50), kilometers: randomNum(50, 100) },
+    { name: 'BM5661726252', workTime: randomNum(0, 50), kilometers: randomNum(50, 100) },
+    { name: 'BM5661726225', workTime: randomNum(0, 50), kilometers: randomNum(50, 100) },
+    { name: 'DYJ3', workTime: randomNum(0, 50), kilometers: randomNum(50, 100) },
+    { name: 'BM5661726217', workTime: randomNum(0, 50), kilometers: randomNum(50, 100) },
+    { name: 'BM5661726207', workTime: randomNum(0, 50), kilometers: randomNum(50, 100) },
+    { name: 'BM5661551672', workTime: randomNum(0, 50), kilometers: randomNum(50, 100) },
+    { name: 'DYJ2', workTime: randomNum(0, 50), kilometers: randomNum(50, 100) },
+    { name: 'BM5661416073', workTime: randomNum(0, 50), kilometers: randomNum(50, 100) },
+];
+
+const initChart = () => {
+    const myChart = echarts.init(chartContainer.value);
+
+    const option = {
+        title: {
+            text: '车辆工作时间与公里数',
+            left: 'center',
+            textStyle: {
+                color: '#fff',
+            }
+        },
+        tooltip: {
+            formatter: function (params) {
+                const item = data[params.dataIndex];
+                return `${item.name}<br />工作时间: ${item.workTime} 小时<br />公里数: ${item.kilometers}km`;
+            }
+        },
+        xAxis: {
+            name: '时间',
+            type: 'value',
+            nameLocation: 'middle', // 设置名称位置
+            nameGap: 20, // 设置名称与轴线的距离
+            axisLabel: {
+                color: '#2db0b3' // 设置x轴名称颜色
+            }
+        },
+        yAxis: {
+            name: '公里数',
+            type: 'value',
+            nameGap: 15, // 设置名称与轴线的距离
+            axisLabel: {
+                color: '#2db0b3' // 设置y轴名称颜色
+            }
+        },
+        series: [{
+            symbolSize: 20,
+            data: data.map(item => [item.workTime, item.kilometers]),
+            type: 'scatter',
+            itemStyle: {
+                color: '#31c1c4' // 设置点的颜色
+            },
+        }]
+    };
+
+    myChart.setOption(option);
+};
+
+onMounted(() => {
+    initChart();
+});
+</script>
+
+<style scoped>
+/* 可根据需要自定义样式 */
 </style>
