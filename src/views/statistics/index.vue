@@ -344,7 +344,6 @@ const exportExcelthree = (row: any, index: any) => {
         .demo-tabs {
             color: white;
             display: flex;
-            flex-direction: column;
             align-items: center;
 
             ::v-deep(.el-tabs__item) {

@@ -508,6 +508,7 @@ const allscreen = () => {
                     justify-content: space-between;
                     padding: 5px 5px;
                     border-radius: 20px;
+                    cursor: pointer;
                 }
             }
 

@@ -4,8 +4,12 @@
         <div class="header">
             <div class="left">
                 <div class="status-title">智慧农业大数据平台</div>
+                <!-- <img style="width: 60px;height: 60px;"
+                    src="https://bms.mtxnyjs.com/front/clocation/static/img/earth.c8167e5.gif"> -->
                 <img style="width: 60px;height: 60px;"
-                    src="https://bms.mtxnyjs.com/front/clocation/static/img/earth.c8167e5.gif">
+                    src="https://wimg.588ku.com/gif320/24/07/09/e1ec99bd1ac046e9aeea1f408ca659b6.gif">
+                <!-- <img style="width: 60px;height: 60px;"
+                    src="https://wimg.588ku.com/gif320/24/07/09/fac8ab1c1aff4a74af9aedf482469d79.gif"> -->
                 <span id="tit">无人车作业</span>
                 <div class="status">
                     <el-tooltip class="box-item" effect="dark" content="刷新网页" placement="bottom">
